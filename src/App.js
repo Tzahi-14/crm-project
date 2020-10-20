@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react'
 import './App.css';
+import { inject, observer } from 'mobx-react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import Clients from './components/Clients'
+import Actions from './components/Actions'
+import Analytics from './components/Analytics'
 
-function App() {
+
+function App(){
+  useEffect(() => {
+
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Route exact path="/" render={() => <Clients />} />
+        <Route exact path="/actions" render={() => <Actions />} />
+        <Route exact path="/analytics" render={() => <Analytics />} />
     </div>
-  );
-}
+    </Router>
 
-export default App;
+  )
+  
+}
+export default App
